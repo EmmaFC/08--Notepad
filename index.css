@@ -1,0 +1,181 @@
+*{
+    padding:0;
+    margin:0;
+    border-style: none;
+    border-color: none;
+    border:0;
+    outline: none;
+}
+
+html {
+    width:100vw;
+    height:100vh;
+}
+
+body {
+    background-color:darkslategrey;
+    width:90vw;
+    height:100vh;
+    
+}
+
+
+#note_introduction {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5%;
+    width:100vw;
+
+}
+
+#note_display {
+    margin-top: 3.5%;
+    display: block;
+    width: 100vw;
+}
+
+#add_note_container {
+    width: 85vw;
+    min-height: 15vh;
+    background-color: rgb(236, 236, 236);
+    border-radius: 14px;
+    margin-bottom: 1%;
+}
+
+input {
+    position: relative;
+    width: 65vw;
+    min-height: 15vh;
+    padding: 2%;
+    background-color: transparent;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.7em;
+    color:rgb(151, 151, 151);
+    z-index:10;
+}
+
+input::placeholder {
+    color:rgb(184, 184, 184);
+}
+
+.btn_save_note {
+    position: relative;
+    width: 15vw;
+    min-height: 25vh;
+    padding: 2%;
+    background-color: rgb(75, 72, 78);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    color:rgb(224, 224, 224);
+    border-radius: 12px;
+    right:0;
+    z-index:10;
+    float:right;
+}
+
+.inp_add_note:focus {
+    outline: none;
+}
+
+.btn_save_note:hover {
+    background-color: rgb(45, 43, 48);
+}
+
+.btn_save_note:active {
+    background-color: rgb(95, 92, 99);
+}
+
+.btn_save_note:visited {
+    background-color: rgb(45, 43, 48);
+}
+
+#note_container {
+    width: 81vw;
+    height: 18vh;
+    padding: 2%;
+    background-color: darkgrey;
+    border-radius: 14px;
+    z-index:10;
+   
+}
+
+#note_container h1 {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 2.5em;
+    color:rgb(45, 54, 63);
+}
+
+#note_container *{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    color:rgb(75, 87, 99);
+}
+
+
+.note_field {
+    width: 81vw;
+    height: 18vh;
+    padding: 2%;
+    background-color: darkgrey;
+    border-radius: 14px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:auto;
+    margin-top:1.2%;
+}
+
+.note_field h1 {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 2.5em;
+    color:rgb(45, 54, 63);
+}
+
+.note_field * {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    color:rgb(75, 87, 99);
+}
+
+
+.buttons_area  {
+    float:right;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.note_area  {
+    margin: auto;
+    min-width:50vw;
+    height:15vh;
+ 
+}
+
+.btn_note {
+    width: 12vw;
+    height:18vh;
+    background-color: rgb(75, 72, 78);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:rgb(224, 224, 224) !important;
+    font-size: 1em !important;
+    border-radius: 12px;
+    right:0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2.5%;
+}
+
+
+.btn_note:hover {
+    background-color: rgb(45, 43, 48);
+}
+
+.btn_note:active {
+    background-color: rgb(95, 92, 99);
+}
+
+.btn_note:visited {
+    background-color: rgb(45, 43, 48);
+}
