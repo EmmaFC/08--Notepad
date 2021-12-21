@@ -4,59 +4,66 @@ let btnAddNote = document.getElementById("btn_save_note");
 btnAddNote.addEventListener("click", () => {
 
     let newId = checkIdNumber ();
-    let lastID = newId.toString();
-    let newNote = inpAddNote.value;
-    let newNoteDisplay = document.createElement('div');
+    let noteID = newId.toString();
+    let newNoteContent = inpAddNote.value;
+    let newNoteId = document.createElement('div');
     
-    newNoteDisplay.innerHTML = 
-    `<div class="note_field">
-        <div class="note_area" id="this_note" >${newNote}</div>
-        <div class="buttons_area">
-            <button class="btn_note" type="submit" id="edit_${newId}" value="Edit">Edit</button>
-            <button class="btn_note" type="submit" value="Delete">Delete</button>
-        </div>
-    </div>`;
-    document.getElementById("note_display").appendChild(newNoteDisplay);
-    console.log("This is the note: " + newNote);
+    newNoteId.innerHTML = 
+    `<div id="Note_${noteID}" class="note_field"><div class="note_area" id="this_note">${newNoteContent}</div>
+    <div class="buttons_area"><button class="btn_note" type="submit" id="edit_${noteID}" value="Edit">Edit</button>
+    <button id="delete_${noteID}" class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
+    document.getElementById("note_display").appendChild(newNoteId);
+    console.log("NOTE " +noteID + " : " + newNoteContent);
 
-    let letsEditNote = document.getElementById(`edit_${newId}`);
-
-        letsEditNote.addEventListener("click", () => {
-            newNoteDisplay.innerHTML = 
-            `<div class="note_field">
-                <div class="note_area" id="this_note" >
-                    <input id="editor_${lastID}" type="text" pl aceholder="Edit note here">
-                </div>
-                <div class="buttons_area">
-                    <button class="btn_note" type="submit" id="upload_${lastID}">Upload</button>
-                    <button class="btn_note" type="submit" value="Delete">Delete</button>
-                </div>
-            </div>`;
-    });
-
-    let btnUploadNote = document.getElementById(`upload_${lastID}`);
-
-    btnUploadNote.addEventListener("click", () => {
+    function editableNote () {
+        let letsEditNote = document.getElementById(`edit_${noteID}`);
         
-        let inpUploadNote = document.getElementById(`editor_${lastID}`).value;
-        
-        newNoteDisplay.innerHTML = `<div class="note_field"><div class="note_area" >${inpUploadNote}</div><div class="buttons_area"><button class="btn_note" type="submit" id="upload_${lastID}" value="Edit">Edit</button><button class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
-    });
+            letsEditNote.addEventListener("click", () => {
+                console.log("NOTE " +noteID + " is ready to be edited");
+                newNoteId.innerHTML = 
+                `<div id="Note_${noteID}" class="note_field">
+                <input class="note_area" id="editor_${noteID}" type="text" pl aceholder="Edit note here">
+                <div class="buttons_area"><input class="btn_note" type="submit" id="upload_${noteID}" value="upload"/><button class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
+                let btnUploadNote = document.getElementById(`upload_${noteID}`);
+
+                btnUploadNote.addEventListener("click", () => {
+                    let inpUploadNote = document.getElementById(`editor_${noteID}`).value;
+                    console.log("NOTE changed: " + inpUploadNote);
+                    console.log("NOTE " +noteID + " is ready to be uploaded");
+                    newNoteId.innerHTML = 
+                    `<div id="Note_${noteID}" class="note_field"><div class="note_area" >${inpUploadNote}</div><div class="buttons_area"><button class="btn_note" type="submit" id="edit_${noteID}" value="Edit">Edit</button><button class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
+                    editableNote ()
+                });
+            });
+    }
+
+    function deleteNote () {
+        let letsDeleteNote = document.getElementById(`delete_${noteID}`);
+        letsDeleteNote.addEventListener("click", () =>{
+            console.log("NOTE " + noteID + " is ready to be deleted");
+            newNoteId.innerHTML = "";
+        });
+    }
+    
+        editableNote ()
+        deleteNote ()
+        newId = checkIdNumber ();
+        noteID = newId.toString();
+        return;
 });
+
 
 function checkIdNumber () {
 
-    const idAlreadyUsed = ["pera", "fresa", "platano", "fresa", "kiwi"];
+    const idAlreadyUsed = [];
     let newIdNumber = "id_" + Math.floor(Math.random()*100)*1; 
 
     if ( idAlreadyUsed.includes(newIdNumber) ) {
-        console.log("No se incluirá el elemento: " + newIdNumber);
-        console.log("Porque está repetido en el array: " + idAlreadyUsed);
+        console.log(newIdNumber + " : ID NO válido");
         return;
     } 
-        console.log(newIdNumber + " es un ID válido");
+        console.log(newIdNumber + " : ID válido");
         idAlreadyUsed.push(newIdNumber);
-        console.log("Array de IDs utilizadas: " + idAlreadyUsed);
         return newIdNumber;
 }
 
