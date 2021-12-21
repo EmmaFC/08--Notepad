@@ -29,7 +29,7 @@ btnAddNote.addEventListener("click", () => {
                 btnUploadNote.addEventListener("click", () => {
                     let inpUploadNote = document.getElementById(`editor_${noteID}`).value;
                     console.log("NOTE changed: " + inpUploadNote);
-                    console.log("NOTE " +noteID + " is ready to be uploaded");
+                    console.log("NOTE " +noteID + " has been saved");
                     newNoteId.innerHTML = 
                     `<div id="Note_${noteID}" class="note_field"><div class="note_area" >${inpUploadNote}</div><div class="buttons_area"><button class="btn_note" type="submit" id="edit_${noteID}" value="Edit">Edit</button><button id="delete_${noteID}" class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
                     editableNote ()
@@ -41,7 +41,7 @@ btnAddNote.addEventListener("click", () => {
     function deleteNote () {
         let letsDeleteNote = document.getElementById(`delete_${noteID}`);
         letsDeleteNote.addEventListener("click", () =>{
-            console.log("NOTE " + noteID + " is ready to be deleted");
+            console.log("NOTE " + noteID + " has been deleted");
             newNoteId.innerHTML = "";
             deleteNote ()
         });
