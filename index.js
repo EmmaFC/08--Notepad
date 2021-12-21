@@ -17,7 +17,7 @@ btnAddNote.addEventListener("click", () => {
 
     function editableNote () {
         let letsEditNote = document.getElementById(`edit_${noteID}`);
-        
+
             letsEditNote.addEventListener("click", () => {
                 console.log("NOTE " +noteID + " is ready to be edited");
                 newNoteId.innerHTML = 
@@ -44,14 +44,10 @@ btnAddNote.addEventListener("click", () => {
             newNoteId.innerHTML = "";
         });
     }
-    
         editableNote ()
         deleteNote ()
-        newId = checkIdNumber ();
-        noteID = newId.toString();
         return;
 });
-
 
 function checkIdNumber () {
 
