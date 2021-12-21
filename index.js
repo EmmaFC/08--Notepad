@@ -17,22 +17,23 @@ btnAddNote.addEventListener("click", () => {
 
     function editableNote () {
         let letsEditNote = document.getElementById(`edit_${noteID}`);
-
+       
             letsEditNote.addEventListener("click", () => {
                 console.log("NOTE " +noteID + " is ready to be edited");
                 newNoteId.innerHTML = 
                 `<div id="Note_${noteID}" class="note_field">
                 <input class="note_area" id="editor_${noteID}" type="text" pl aceholder="Edit note here">
-                <div class="buttons_area"><input class="btn_note" type="submit" id="upload_${noteID}" value="upload"/><button class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
+                <div class="buttons_area"><input class="btn_note" type="submit" id="upload_${noteID}" value="upload"/><button id="delete_${noteID}" class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
                 let btnUploadNote = document.getElementById(`upload_${noteID}`);
-
+                deleteNote ()
                 btnUploadNote.addEventListener("click", () => {
                     let inpUploadNote = document.getElementById(`editor_${noteID}`).value;
                     console.log("NOTE changed: " + inpUploadNote);
                     console.log("NOTE " +noteID + " is ready to be uploaded");
                     newNoteId.innerHTML = 
-                    `<div id="Note_${noteID}" class="note_field"><div class="note_area" >${inpUploadNote}</div><div class="buttons_area"><button class="btn_note" type="submit" id="edit_${noteID}" value="Edit">Edit</button><button class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
+                    `<div id="Note_${noteID}" class="note_field"><div class="note_area" >${inpUploadNote}</div><div class="buttons_area"><button class="btn_note" type="submit" id="edit_${noteID}" value="Edit">Edit</button><button id="delete_${noteID}" class="btn_note" type="submit" value="Delete">Delete</button></div></div>`;
                     editableNote ()
+                    deleteNote ()
                 });
             });
     }
@@ -42,12 +43,14 @@ btnAddNote.addEventListener("click", () => {
         letsDeleteNote.addEventListener("click", () =>{
             console.log("NOTE " + noteID + " is ready to be deleted");
             newNoteId.innerHTML = "";
+            deleteNote ()
         });
     }
         editableNote ()
         deleteNote ()
         return;
 });
+
 
 function checkIdNumber () {
 
